@@ -48,6 +48,7 @@ Program sonlandırılmıştır! Gorusmek uzere! gibi bir çıktı verip bitirebi
 			switch (sayi){
 				case 0:
 					System.out.println("Program sonlandırılmış! Gorusmek uzere!");
+					System.exit(0);
 					break;
 				case 1:
 					System.out.println("Merhaba dunya");
@@ -94,6 +95,7 @@ Program sonlandırılmıştır! Gorusmek uzere! gibi bir çıktı verip bitirebi
 			switch (number){
 				case 0:
 					System.out.println("Programme terminated! Goodbye!");
+					System.exit(0);
 					break;
 				case 1:
 					System.out.println("Hello world");
