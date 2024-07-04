@@ -1,0 +1,9 @@
+barış hoca ile yaptıgımız JavayaGiriş içindeki eksikler tamamlandı
+düzeltmeler yapıldı ve github a pushlandı
+
+alperen hoca ile yaptıgımız uygulamaDersleri week02.day01 örneklerinin hepsine bakıldı
+week02.day01 ders tekrarı izlendi ve örnekleri tekrar yaptım
+
+week02.day03 ödev deki eksik olan kısımlarımı tamamladım switch case ile ilgili olan soruları tekrar cozdum
+
+week02.day04 soruların hepsi tekrar edildi (cözüldü) soru3 deki eksik olan 2. ve 3. soru cozum alternetifleri yazıp tamamlandı
