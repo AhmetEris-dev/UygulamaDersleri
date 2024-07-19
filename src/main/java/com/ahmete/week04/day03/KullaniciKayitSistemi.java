@@ -44,26 +44,130 @@ public class KullaniciKayitSistemi {
 	}
 	
 	private static Kullanici kullaniciKaydi() {
-		String isim;
-		String soyisim;
-		String email;
-		String telNo;
-		String sifre;
-		String sifreYeniden;
-		String kullaniciAdi;
-		String tcKimlik;
+		
 		LocalDate dogumTarihi;
 		Kullanici kullanici;
 		dogumTarihi = dogumTarihiAl();
 		if(dogumTarihKontrol(dogumTarihi)){
+			// dogum tarihini kontolunu gectik o zaman kullanıcı oluşturabiliriz
 			kullanici = new Kullanici();
 			kullanici.setDogumTarihi(dogumTarihi);
+			
+			//isim soyisim alma
+			String[] isimSoyisim=isimSoyisimAl();
+			kullanici.setIsim(isimSoyisim[0]);
+			kullanici.setIsim(isimSoyisim[1]);
+			
+			// email alma
+			kullanici.setEmail(emailAl());
+			// telefon numarası alma
+			kullanici.setTelNo(telNoAl());
+			// sifre alma
+			kullanici.setSifre(sifreAl());
+			// kullanıcı adı alma
+			kullanici.setKullaniciAdi(kullaniciAdiAl());
+			// tc kimlik no alma
+			kullanici.setTcKimlik(tcKimlikAl());
+			
 			
 		} else{
 			System.out.println("18 Yasindan kucukler kayit islemi gerceklestiremez.");
 		}
 		return null;
 	}
+	
+	private static String tcKimlikAl() {
+		String tcKimlik;
+		while (true){
+			System.out.println("lütfen bir tc kimlik no  giriniz : ");
+			tcKimlik=scanner.nextLine();
+			if (tcKimlik.length()!=11){
+				System.out.println("TC kimlik no 11 haneli olmalıdır.");
+				continue;
+			}
+			else if (!numerikDegerKontrol(tcKimlik)) {
+				System.out.println("TC Kimlik no sadece numerik karakterler barındırabilir. ");
+				continue;
+			
+			}
+			return tcKimlik;
+		}
+		
+	}
+	private static boolean numerikDegerKontrol(String deger){
+		for (int i = 0; i <deger.length() ; i++) {
+			if (Character.isDigit(deger.charAt(i))){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private static String kullaniciAdiAl() {
+		String kullaniciAdi;
+		while (true){
+			System.out.println("lütfen bir sifre giriniz min 4 - max 16 karakter: ");
+			kullaniciAdi=scanner.nextLine();
+			if (kullaniciAdi.length()<4){
+				System.out.println("sifre 4 karakterden kısa olamaz!");
+				continue;
+			}else if (kullaniciAdi.length()>16) {
+				System.out.println("sifre 16 karakterden uzun olamaz!");
+				continue;
+			}
+			return kullaniciAdi;
+		}
+	}
+	
+	private static String sifreAl() {
+		
+		String sifre;
+		String sifreYeniden;
+		while (true){
+			System.out.println("lütfen bir sifre giriniz min 8 - max 32 karakter: ");
+			sifre=scanner.nextLine();
+			if (sifre.length()<8){
+				System.out.println("sifre 8 karakterden kısa olamaz!");
+				continue;
+			}else if (sifre.length()>32){
+				System.out.println("sifre 32 karakterden uzun olamaz!");
+				continue;
+			}else {
+				System.out.println("lütfen sifrenizi tekrar giriniz!");
+				sifreYeniden=scanner.nextLine();
+				if (sifre.equals(sifreYeniden)){
+					return sifre;
+				}else {
+					System.out.println("girdiğiniz sifreler eşleşmiyor!");
+				}
+			}
+		}
+		
+	}
+	
+	private static String telNoAl() {
+		System.out.print("lütfen telefon numarınızı giriniz: +90 ");
+		String telNo=scanner.nextLine();
+		return telNo;
+	}
+	
+	private static String emailAl() {
+		System.out.print("lütfen emailinizi giriniz");
+		String email=scanner.nextLine();
+		return email;
+	}
+	
+	private static String[] isimSoyisimAl() {
+		String[] isimSoyisim=new String[2];
+		
+		System.out.print("lütfen adınızı giriniz: ");
+		isimSoyisim[0]=scanner.nextLine();
+		System.out.print("lütfen adınızı giriniz: ");
+		isimSoyisim[1]=scanner.nextLine();
+		
+		return isimSoyisim;
+	}
+	
 	
 	private static LocalDate dogumTarihiAl() {
 		while (true){
@@ -83,6 +187,7 @@ public class KullaniciKayitSistemi {
 		boolean resitMi = (yas<18) ? false : true;
 		return resitMi;
 	}
+	
 	
 	
 }
