@@ -1,6 +1,6 @@
 package com.ahmete.week02.day04;
 
-public class soru3 {
+public class soru3_soruCevabi {
 	/*
 	"Java,React,Spring" String degerinden bir for döngüsü içerisinde Java React ve Spring i ayrı ayrı yazdıralım.
 	 */

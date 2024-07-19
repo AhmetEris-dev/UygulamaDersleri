@@ -7,7 +7,7 @@ public class soru2 {
 	public static void main(String[] args) {
 		char baslangic = 'a';
 		char bitis = 'z';
-		int sayi = baslangic + 10;
+		int sayi = baslangic;
 		for (; baslangic <= bitis;baslangic++ ) {
 			System.out.println(baslangic + "");
 		}

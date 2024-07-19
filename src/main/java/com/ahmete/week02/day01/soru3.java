@@ -11,7 +11,7 @@ public class soru3 {
 		String surname = "Eriş";
 		System.out.println(name + " " + surname);
 		
-		System.out.println(name + "/n" + surname); // /n alt satıra yazdırmanı sağlar.
+		System.out.println(name + "\n" + surname); // /n alt satıra yazdırmanı sağlar.
 		
 		
 		

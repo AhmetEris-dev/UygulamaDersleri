@@ -7,9 +7,10 @@ public class soru1 {
 	 */
 	public static void main(String[] args) {
 		float rawPrice = 0, price = 100, priceWithoutVat, vatRatio = 0.18f, profitRatio = 0.15f;
-		priceWithoutVat = price - (price * vatRatio);
 		
+		priceWithoutVat = price - (price * vatRatio);
 		System.out.println("KDV'siz fiyat: " + priceWithoutVat);
+		
 		rawPrice = priceWithoutVat - (priceWithoutVat * profitRatio);
 		System.out.println("ham fiyat: " + rawPrice);
 		
