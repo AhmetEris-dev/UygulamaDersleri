@@ -69,15 +69,15 @@ public class KullaniciKayitSistemi {
 			kullanici.setDogumTarihi(dogumTarihi);
 			
 			//isim soyisim alma
-//			String[] isimSoyisim=isimSoyisimAl();
-//			kullanici.setIsim(isimSoyisim[0]);
-//			kullanici.setSoyisim(isimSoyisim[1]);
-//
-//			// email alma
+			String[] isimSoyisim=isimSoyisimAl();
+			kullanici.setIsim(isimSoyisim[0]);
+			kullanici.setSoyisim(isimSoyisim[1]);
+
+			// email alma
 			kullanici.setEmail(emailAl());
 			// telefon numarası alma
-//			kullanici.setTelNo(telNoAl());
-//			// sifre alma
+			kullanici.setTelNo(telNoAl());
+			// sifre alma
 			kullanici.setSifre(sifreAl());
 			// kullanıcı adı alma
 			kullanici.setKullaniciAdi(kullaniciAdiAl(true));
