@@ -15,7 +15,6 @@ public class soru5 {
 		for (int i = 0; i <array.length ; i++) {
 			toplam+=array[i];
 			
-			
 			if (array[i]%2==0){
 				System.out.println(array[i]+" cifttir");
 			}else {

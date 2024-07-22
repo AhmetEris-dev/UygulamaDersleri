@@ -24,7 +24,12 @@ public class OzelListeTest {
 		
 		System.out.println("-----------------");
 		int[] numArr={3,5,7,9};
-		ozelListe.adAll(numArr);
+		ozelListe.addAll(numArr);
+		ozelListe.remove(8);
+		ozelListe.list();
+		System.out.println();
+		int[] indexesToBeRemoved = {3,0,7,5};
+		ozelListe.removeAllIndexes(indexesToBeRemoved);
 		ozelListe.list();
 	}
 }

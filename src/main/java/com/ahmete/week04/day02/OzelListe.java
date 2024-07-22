@@ -70,10 +70,16 @@ public class OzelListe {
 	/*
 	1.4 - addAll isimli bir metot yazalım. Dışarıdan dizi alsın, aldığı dizinin elemanlarının hepsini sayı dizimize eklesin.
 	 */
-	public  void adAll(int[] sayiDizisi){
+	public  void addAll(int[] sayiDizisi){
 		for (int i = 0; i <sayiDizisi.length ; i++) {
 			add(sayiDizisi[i]);
 			
+		}
+	}
+	public void removeAllIndexes(int[] indexesToBeRemoved){
+		Arrays.sort(indexesToBeRemoved);
+		for (int i = indexesToBeRemoved.length-1; i>=0;i--){
+			remove(indexesToBeRemoved[i]);
 		}
 	}
 }

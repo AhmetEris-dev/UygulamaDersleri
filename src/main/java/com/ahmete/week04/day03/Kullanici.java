@@ -97,4 +97,9 @@ public class Kullanici {
 	public LocalDate getDogumTarihi() {
 		return dogumTarihi;
 	}
+	
+	@Override
+	public String toString() {
+		return "Kullanici{" + "dogumTarihi=" + getDogumTarihi() + ", id=" + getId() + ", isim='" + getIsim() + '\'' + ", soyisim='" + getSoyisim() + '\'' + ", email='" + getEmail() + '\'' + ", telNo='" + getTelNo() + '\'' + ", sifre='" + getSifre() + '\'' + ", kullaniciAdi='" + getKullaniciAdi() + '\'' + ", tcKimlik='" + getTcKimlik() + '\'' + ", kayitTarihi=" + getKayitTarihi() + '}';
+	}
 }

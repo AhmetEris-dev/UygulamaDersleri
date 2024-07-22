@@ -16,6 +16,8 @@ public class KullaniciKayitSistemi {
 //        System.out.print("Lutfen telno giriniz : +90 ");
 //        scanner.nextLine();
 	
+	menu();
+
 	}
 	
 	public static void menu(){
@@ -23,6 +25,9 @@ public class KullaniciKayitSistemi {
 		do {
 			System.out.println("### KULLANICI KAYIT SISTEMI ###");
 			System.out.println("1- Kayit Ol");
+			System.out.println("2- Giris Yap");
+			System.out.println("3- Sifremi unuttum");
+			System.out.println("4- kullanıcıları listele");
 			System.out.println("0- Cikis");
 			System.out.print("Lutfen bir secim yapiniz : ");
 			secim = scanner.nextInt();
@@ -38,8 +43,14 @@ public class KullaniciKayitSistemi {
 		switch (secim){
 			case 1: {
 				Kullanici kullanici = kullaniciKaydi();
+				System.out.println(kullanici);
 				break;
 			}
+			case 2: {
+				KullaniciDB.findAll();
+				break;
+			}
+			
 		}
 	}
 	
@@ -56,7 +67,7 @@ public class KullaniciKayitSistemi {
 			//isim soyisim alma
 			String[] isimSoyisim=isimSoyisimAl();
 			kullanici.setIsim(isimSoyisim[0]);
-			kullanici.setIsim(isimSoyisim[1]);
+			kullanici.setSoyisim(isimSoyisim[1]);
 			
 			// email alma
 			kullanici.setEmail(emailAl());
@@ -68,6 +79,7 @@ public class KullaniciKayitSistemi {
 			kullanici.setKullaniciAdi(kullaniciAdiAl());
 			// tc kimlik no alma
 			kullanici.setTcKimlik(tcKimlikAl());
+			return kullanici;
 			
 			
 		} else{
@@ -75,6 +87,7 @@ public class KullaniciKayitSistemi {
 		}
 		return null;
 	}
+	
 	
 	private static String tcKimlikAl() {
 		String tcKimlik;
@@ -96,7 +109,7 @@ public class KullaniciKayitSistemi {
 	}
 	private static boolean numerikDegerKontrol(String deger){
 		for (int i = 0; i <deger.length() ; i++) {
-			if (Character.isDigit(deger.charAt(i))){
+			if (!Character.isDigit(deger.charAt(i))){
 				return false;
 			}
 		}
@@ -106,13 +119,13 @@ public class KullaniciKayitSistemi {
 	private static String kullaniciAdiAl() {
 		String kullaniciAdi;
 		while (true){
-			System.out.println("lütfen bir sifre giriniz min 4 - max 16 karakter: ");
+			System.out.println("lütfen bir kullanıcı adı giriniz min 4 - max 16 karakter: ");
 			kullaniciAdi=scanner.nextLine();
 			if (kullaniciAdi.length()<4){
-				System.out.println("sifre 4 karakterden kısa olamaz!");
+				System.out.print("kullanıcı adı 4 karakterden kısa olamaz!");
 				continue;
 			}else if (kullaniciAdi.length()>16) {
-				System.out.println("sifre 16 karakterden uzun olamaz!");
+				System.out.print("kullanıcı adı 16 karakterden uzun olamaz!");
 				continue;
 			}
 			return kullaniciAdi;
@@ -124,7 +137,7 @@ public class KullaniciKayitSistemi {
 		String sifre;
 		String sifreYeniden;
 		while (true){
-			System.out.println("lütfen bir sifre giriniz min 8 - max 32 karakter: ");
+			System.out.print("lütfen bir sifre giriniz min 8 - max 32 karakter: ");
 			sifre=scanner.nextLine();
 			if (sifre.length()<8){
 				System.out.println("sifre 8 karakterden kısa olamaz!");
@@ -133,7 +146,7 @@ public class KullaniciKayitSistemi {
 				System.out.println("sifre 32 karakterden uzun olamaz!");
 				continue;
 			}else {
-				System.out.println("lütfen sifrenizi tekrar giriniz!");
+				System.out.print("lütfen sifrenizi tekrar giriniz!");
 				sifreYeniden=scanner.nextLine();
 				if (sifre.equals(sifreYeniden)){
 					return sifre;
@@ -162,7 +175,7 @@ public class KullaniciKayitSistemi {
 		
 		System.out.print("lütfen adınızı giriniz: ");
 		isimSoyisim[0]=scanner.nextLine();
-		System.out.print("lütfen adınızı giriniz: ");
+		System.out.print("lütfen soyisim giriniz: ");
 		isimSoyisim[1]=scanner.nextLine();
 		
 		return isimSoyisim;
