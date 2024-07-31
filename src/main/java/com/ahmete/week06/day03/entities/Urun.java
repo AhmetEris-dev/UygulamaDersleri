@@ -1,11 +1,13 @@
 package com.ahmete.week06.day03.entities;
 
 public class Urun {
-	static  protected int urunIDCount=0;
+	static protected int urunIDCount = 0;
+	
 	protected String urunAdi;
 	protected Double fiyat;
 	protected Integer stokAdet;
 	protected Integer urunID;
+	protected String urunDescription;
 	//TODO:Açıklama ekle.
 	
 	public Urun(Double fiyat, Integer stokAdet, String urunAdi) {
@@ -14,6 +16,15 @@ public class Urun {
 		this.urunAdi = urunAdi;
 		this.urunID = ++urunIDCount;
 	}
+	
+	public String getUrunDescription() {
+		return urunDescription;
+	}
+	
+	public void setUrunDescription(String urunDescription) {
+		this.urunDescription = urunDescription;
+	}
+	
 	
 	public Integer getUrunID() {
 		return urunID;
