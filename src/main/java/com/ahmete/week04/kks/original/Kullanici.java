@@ -1,4 +1,4 @@
-package com.ahmete.week04.day03;
+package com.ahmete.week04.kks.original;
 
 import java.time.LocalDate;
 
@@ -100,6 +100,17 @@ public class Kullanici {
 	
 	@Override
 	public String toString() {
-		return "Kullanici{" + "dogumTarihi=" + getDogumTarihi() + ", id=" + getId() + ", isim='" + getIsim() + '\'' + ", soyisim='" + getSoyisim() + '\'' + ", email='" + getEmail() + '\'' + ", telNo='" + getTelNo() + '\'' + ", sifre='" + getSifre() + '\'' + ", kullaniciAdi='" + getKullaniciAdi() + '\'' + ", tcKimlik='" + getTcKimlik() + '\'' + ", kayitTarihi=" + getKayitTarihi() + '}';
+		return "Kullanici{" +
+				"id=" + id +
+				", isim='" + isim + '\'' +
+				", soyisim='" + soyisim + '\'' +
+				", email='" + email + '\'' +
+				", telNo='" + telNo + '\'' +
+				", sifre='" + sifre + '\'' +
+				", kullaniciAdi='" + kullaniciAdi + '\'' +
+				", tcKimlik='" + tcKimlik + '\'' +
+				", kayitTarihi=" + kayitTarihi +
+				", dogumTarihi=" + dogumTarihi +
+				'}';
 	}
 }

@@ -1,17 +1,20 @@
-package com.ahmete.week04.day03;
+package com.ahmete.week04.kks.original;
 
 import java.util.Arrays;
 
-public class KullaniciOzelListe {
-	
+public class MailOzelListe {
 	/*
 	1- OzelListe isimli bir sinif olusturalim. Bu sinif icerisinde sayi dizisi ve dizi boyutu tutsun.
 	 */
-	private Kullanici[] kullaniciDizisi;
+	private Mail[] mailDizisi;
 	private int boyut;
+	MailOzelListe(){
+		mailDizisi=new Mail[0]; //constructor da verdik cağrıldıgı zaman otomatik olarak dizi 0 indexinden
+		// başlıycak
+	}
 	
-	public Kullanici[] getKullaniciDizisi() {
-		return kullaniciDizisi;
+	public Mail[] getMailDizisi() {
+		return mailDizisi;
 		
 	}
 	/*
@@ -19,23 +22,16 @@ public class KullaniciOzelListe {
 	int türünde sayiyi alacak ve sayi dizimize ekleyecek.
 	 */
 	
-	public Kullanici add(Kullanici kullanici) {
-		Kullanici[] tmp;
-		if (kullaniciDizisi == null) {
-			kullaniciDizisi = new Kullanici[1];
-			kullaniciDizisi[0] = kullanici;
-			this.boyut = 1;
+	public Mail add(Mail mail) {
+		Mail[] tmp;
+		tmp = new Mail[this.boyut+1];
+		for (int i = 0; i<boyut; i++){
+			tmp[i] = mailDizisi[i];
 		}
-		else {
-			tmp = new Kullanici[this.boyut+1];
-			for (int i = 0; i<boyut; i++){
-				tmp[i] = kullaniciDizisi[i];
-			}
-			tmp[this.boyut] = kullanici;
-			kullaniciDizisi = tmp;
-			this.boyut++;
-		}
-		return kullaniciDizisi[boyut-1];
+		tmp[this.boyut] = mail;
+		mailDizisi = tmp;
+		this.boyut++;
+		return mailDizisi[boyut-1];
 	}
 	
 	/*
@@ -47,20 +43,20 @@ public class KullaniciOzelListe {
 			try {
 				throw new ArrayIndexOutOfBoundsException("");
 			} catch (ArrayIndexOutOfBoundsException e ){
-				System.out.println("Dizide "  + index +". eleman bulunmamakta.");
+				System.out.println("Mailde "  + index +". eleman bulunmamakta.");
 			}
 		}else {
 			try {
-				Kullanici[] tmp = new Kullanici[this.boyut - 1];
+				Mail[] tmp = new Mail[this.boyut - 1];
 //            int j = 0;
 				for (int i = 0; i < tmp.length; i++) {
 					if (i < index) {
-						tmp[i] = kullaniciDizisi[i];
+						tmp[i] = mailDizisi[i];
 					} else {
-						tmp[i] = kullaniciDizisi[i + 1];
+						tmp[i] = mailDizisi[i + 1];
 					}
 				}
-				kullaniciDizisi = tmp;
+				mailDizisi = tmp;
 				boyut--;
 			} catch (NegativeArraySizeException e) {
 				System.out.println("Dizide cikarilabilecek eleman bulunmamaktadir. ( Dizi BOS!! ) ");
@@ -75,7 +71,7 @@ public class KullaniciOzelListe {
 	public void list(){
 		System.out.print("{");
 		for (int i = 0; i <boyut ; i++) {
-			System.out.print(kullaniciDizisi[i]);
+			System.out.print(mailDizisi[i]);
 			if (i != boyut-1){
 				System.out.print(",");
 			}
@@ -86,15 +82,19 @@ public class KullaniciOzelListe {
 	/*
 	1.4 - addAll isimli bir metot yazalım. Dışarıdan dizi alsın, aldığı dizinin elemanlarının hepsini sayı dizimize eklesin.
 	 */
-	public  void adAll(Kullanici[] kullanicilar){
-		for (int i = 0; i <kullanicilar.length ; i++) {
-			add(kullanicilar[i]);
+	public Mail[] addAll(Mail[] mailDizisi){
+		for (int i = 0; i<mailDizisi.length;i++){
+			add(mailDizisi[i]);
 		}
+		return mailDizisi;
 	}
 	public void removeAllIndexes(int[] indexesToBeRemoved){
 		Arrays.sort(indexesToBeRemoved);
 		for (int i = indexesToBeRemoved.length-1; i>=0;i--){
 			remove(indexesToBeRemoved[i]);
 		}
+	}
+	public Mail replace(int index, Mail mail) {
+		return mailDizisi[index] = mail;
 	}
 }

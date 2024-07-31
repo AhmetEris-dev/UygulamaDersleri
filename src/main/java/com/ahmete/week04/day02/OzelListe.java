@@ -38,7 +38,8 @@ public class OzelListe {
 	}
 	
 	/*
-	1.2 - OzelListe sınıfında remove isimli bir metot yazalim. Bu metot kullanıcının dışarıdan parametre olarak verdiği index'i silecek.
+	1.2 - OzelListe sınıfında remove isimli bir metot yazalim. Bu metot kullanıcının dışarıdan parametre olarak
+	verdiği index'i silecek.
 	 */
 	public void remove(int index) {
 		int[] tmp = new int[this.boyut - 1];
@@ -53,32 +54,37 @@ public class OzelListe {
 		sayiDizisi = tmp;
 		boyut--;
 	}
+	
 	/*
-	1.3 - list isimli bir metot daha yazalım. Bu metot listemizi { , , , , } formatında yazdırsın. Son eleman virgül problemini de çözelim.
+	1.3 - list isimli bir metot daha yazalım. Bu metot listemizi { , , , , } formatında yazdırsın. Son eleman virgül
+	problemini de çözelim.
 	 */
-	public void list(){
+	public void list() {
 		System.out.print("{");
-		for (int i = 0; i <boyut ; i++) {
+		for (int i = 0; i < boyut; i++) {
 			System.out.print(sayiDizisi[i]);
-			if (i != boyut-1){
+			if (i != boyut - 1) {
 				System.out.print(",");
 			}
 			
 		}
 		System.out.println("}");
 	}
+	
 	/*
-	1.4 - addAll isimli bir metot yazalım. Dışarıdan dizi alsın, aldığı dizinin elemanlarının hepsini sayı dizimize eklesin.
+	1.4 - addAll isimli bir metot yazalım. Dışarıdan dizi alsın, aldığı dizinin elemanlarının hepsini sayı dizimize
+	eklesin.
 	 */
-	public  void addAll(int[] sayiDizisi){
-		for (int i = 0; i <sayiDizisi.length ; i++) {
+	public void addAll(int[] sayiDizisi) {
+		for (int i = 0; i < sayiDizisi.length; i++) {
 			add(sayiDizisi[i]);
 			
 		}
 	}
-	public void removeAllIndexes(int[] indexesToBeRemoved){
+	
+	public void removeAllIndexes(int[] indexesToBeRemoved) {
 		Arrays.sort(indexesToBeRemoved);
-		for (int i = indexesToBeRemoved.length-1; i>=0;i--){
+		for (int i = indexesToBeRemoved.length - 1; i >= 0; i--) {
 			remove(indexesToBeRemoved[i]);
 		}
 	}
