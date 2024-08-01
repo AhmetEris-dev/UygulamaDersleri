@@ -1,4 +1,4 @@
-package com.ahmete.week06;
+package com.ahmete.week06.day03;
 
 import com.ahmete.week04.kks.refactored.databases.KullaniciDB;
 import com.ahmete.week04.kks.refactored.databases.MailDB;
