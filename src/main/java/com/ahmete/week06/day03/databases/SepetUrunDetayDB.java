@@ -5,8 +5,7 @@ import com.ahmete.week06.day03.entities.UrunSepetDetay;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UrunSepetDetayDB {
-	
+public class SepetUrunDetayDB {
 	static List<UrunSepetDetay> sepetList = new ArrayList<>();
 	
 	
@@ -18,6 +17,9 @@ public class UrunSepetDetayDB {
 		for (UrunSepetDetay sepetUrun : sepetList) {
 			System.out.println(sepetUrun);
 		}
+		return sepetList;
+	}
+	public static List<UrunSepetDetay> sepetGetAll() {
 		return sepetList;
 	}
 	
@@ -64,4 +66,11 @@ public class UrunSepetDetayDB {
 		}
 	}
 	
+	public static Double getToplamSepetFiyat() {
+		Double toplamFiyat = 0.0;
+		for (UrunSepetDetay sepet: sepetList){
+			toplamFiyat += sepet.getToplamFiyat();
+		}
+		return toplamFiyat;
+	}
 }

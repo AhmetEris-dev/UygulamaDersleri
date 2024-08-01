@@ -4,7 +4,6 @@ import com.ahmete.week06.day03.utility.EColor;
 import com.ahmete.week06.day03.utility.ESize;
 
 public class Kiyafet extends Urun{
-	
 	ESize size;
 	EColor color;
 	

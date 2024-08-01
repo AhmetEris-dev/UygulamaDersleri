@@ -8,11 +8,19 @@ public class UrunSepetDetay {
 	
 	private Integer sepetDetayID;
 	private Integer UrunID;
+	private Integer userID;
 	private String urunAdi;
 	private Integer sepetAdet;
 	private Double adetFiyat;
 	private Double toplamFiyat;
 	
+	public Integer getUserID() {
+		return userID;
+	}
+	
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
 	
 	public Integer getSepetDetayID() {
 		return sepetDetayID;

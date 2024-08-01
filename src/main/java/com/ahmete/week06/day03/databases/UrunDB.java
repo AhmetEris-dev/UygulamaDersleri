@@ -1,6 +1,5 @@
 package com.ahmete.week06.day03.databases;
 
-import com.ahmete.week04.kks.refactored.utility.DataBaseManager;
 import com.ahmete.week06.day03.entities.AltGiyim;
 import com.ahmete.week06.day03.entities.Urun;
 import com.ahmete.week06.day03.entities.UstGiyim;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class UrunDB  {
+public class UrunDB {
 	static List<Urun> urunList = new ArrayList<>();
 	static Random random =new Random();
 	static DecimalFormat df = new DecimalFormat("#.00");
@@ -50,6 +49,21 @@ public class UrunDB  {
 		}
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static List<Urun> generateAltGiyim(int count) {
 		String[] names = {"Pantolon", "Kot Pantolon", "Şort", "Mayo", "Etek"};
 		ESize[] sizes = ESize.values();
@@ -85,4 +99,6 @@ public class UrunDB  {
 		}
 		return urunList;
 	}
+	
+	
 }
