@@ -1,6 +1,8 @@
 package com.ahmete.week06.day03.entities;
 
-public class Urun {
+import com.ahmete.week04.kks.refactored.entities.BaseEntitiy;
+
+public class Urun extends BaseEntitiy {
 	static protected int urunIDCount = 0;
 	
 	protected String urunAdi;
