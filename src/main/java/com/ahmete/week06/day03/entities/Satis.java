@@ -1,52 +1,63 @@
 package com.ahmete.week06.day03.entities;
 
 public class Satis {
-	static int sepetIDCounter = 0;
+	private Integer userID;
 	private Integer sepetID;
-	private String faturaUUID;
-	UrunSepetDetay sepetDetayList;
-	Integer user;
-	private Double toplamFiyat;
+	private Urun urun;
+	private Integer urunAdet;
+	private Double adetFiyat;
+	private Double toplamUrunFiyat;
 	
-	public Satis() {
-		this.sepetID = sepetIDCounter++;
-		
+	public Double getAdetFiyat() {
+		return adetFiyat;
 	}
 	
-	public String getFaturaUUID() {
-		return faturaUUID;
+	public void setAdetFiyat(Double adetFiyat) {
+		this.adetFiyat = adetFiyat;
 	}
 	
-	public void setFaturaUUID(String faturaUUID) {
-		this.faturaUUID = faturaUUID;
+	public Integer getSepetID() {
+		return sepetID;
 	}
 	
-	public UrunSepetDetay getSepetDetayList() {
-		return sepetDetayList;
+	public void setSepetID(Integer sepetID) {
+		this.sepetID = sepetID;
 	}
 	
-	public void setSepetDetayList(UrunSepetDetay sepetDetayList) {
-		this.sepetDetayList = sepetDetayList;
+	public Double getToplamUrunFiyat() {
+		return toplamUrunFiyat;
 	}
 	
-	public Double getToplamFiyat() {
-		return toplamFiyat;
+	public void setToplamUrunFiyat(Double toplamUrunFiyat) {
+		this.toplamUrunFiyat = toplamUrunFiyat;
 	}
 	
-	public void setToplamFiyat(Double toplamFiyat) {
-		this.toplamFiyat = toplamFiyat;
+	public Urun getUrun() {
+		return urun;
 	}
 	
-	public Integer getUser() {
-		return user;
+	public void setUrun(Urun urun) {
+		this.urun = urun;
 	}
 	
-	public void setUser(Integer user) {
-		this.user = user;
+	public Integer getUrunAdet() {
+		return urunAdet;
+	}
+	
+	public void setUrunAdet(Integer urunAdet) {
+		this.urunAdet = urunAdet;
+	}
+	
+	public Integer getUserID() {
+		return userID;
+	}
+	
+	public void setUserID(Integer userID) {
+		this.userID = userID;
 	}
 	
 	@Override
 	public String toString() {
-		return "Satis{" + "faturaUUID='" + getFaturaUUID() + '\'' + ", sepetID=" + sepetID + ", sepetDetayList=" + getSepetDetayList() + ", user=" + getUser() + ", toplamFiyat=" + getToplamFiyat() + '}';
+		return "Sepet{" + "adetFiyat=" + getAdetFiyat() + ", userID=" + getUserID() + ", sepetID='" + getSepetID() + '\'' + ", urun=" + getUrun() + ", urunAdet=" + getUrunAdet() + ", toplamUrunFiyat=" + getToplamUrunFiyat() + '}';
 	}
 }

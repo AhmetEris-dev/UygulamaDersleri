@@ -2,7 +2,7 @@ package com.ahmete.week06.day03.entities;
 
 import java.text.DecimalFormat;
 
-public class UrunSepetDetay {
+public class Sepet {
 	static private Integer sepetDetayIDCounter = 0;
 	static DecimalFormat df = new DecimalFormat("#.00");
 	
@@ -26,7 +26,7 @@ public class UrunSepetDetay {
 		return sepetDetayID;
 	}
 	
-	public UrunSepetDetay() {
+	public Sepet() {
 		this.sepetDetayID = sepetDetayIDCounter++;
 	}
 	

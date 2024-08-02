@@ -1,7 +1,7 @@
 package com.ahmete.week06.day03;
 
 import com.ahmete.week06.day03.databases.SatisDB;
-import com.ahmete.week06.day03.databases.SepetUrunDetayDB;
+import com.ahmete.week06.day03.databases.SepetDB;
 import com.ahmete.week06.day03.databases.UrunDB;
 import com.ahmete.week06.day03.entities.*;
 
@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class TrendYolApp {
 	static Scanner sc = new Scanner(System.in);
-	static DecimalFormat df = new DecimalFormat("#.00");
+	static DecimalFormat df = new DecimalFormat("#,00");
 	
 	public static void tredyolMenu() {
 		int userInput = -1;
@@ -110,7 +110,7 @@ public class TrendYolApp {
 	}
 	
 	private static User sepetMenu(User user) {
-		List<UrunSepetDetay> sepetList = SepetUrunDetayDB.sepetGetAll();
+		List<Sepet> sepetList = SepetDB.sepetGetAll();
 		int userInput = -1;
 		do {
 			System.out.println("### SEPET MENU ###");
@@ -137,8 +137,8 @@ public class TrendYolApp {
 					if (sepetList.isEmpty()){
 						System.out.println("Sepet Boş!");
 					}
-					else SepetUrunDetayDB.sepetListAll();
-					Double toplamSepetFiyat = Double.valueOf(df.format(SepetUrunDetayDB.getToplamSepetFiyat()));
+					else SepetDB.sepetListAll();
+					Double toplamSepetFiyat = Double.valueOf(df.format(SepetDB.getToplamSepetFiyat()));
 					System.out.println();
 					System.out.println("toplam fiyat: "+ toplamSepetFiyat);
 					System.out.println();
@@ -185,14 +185,14 @@ public class TrendYolApp {
 		return user;
 	}
 	
-	private static void satinAlMenu(List<UrunSepetDetay> sepetList, User user) {
+	private static void satinAlMenu(List<Sepet> sepetList, User user) {
 		if (sepetList.isEmpty()){
 			System.out.println("Sepet Boş!");
 			return;
 		}
 		String uuid = String.valueOf(java.util.UUID.randomUUID());
 		int userInput;
-		Double toplamSepetFiyat = Double.valueOf(df.format(SepetUrunDetayDB.getToplamSepetFiyat()));
+		Double toplamSepetFiyat = Double.valueOf(df.format(SepetDB.getToplamSepetFiyat()));
 		System.out.println("Fatura Numarası: "+ uuid);
 		System.out.println("toplam fiyat: "+ toplamSepetFiyat);
 		System.out.println("1- satin alma işlemini gerçekleştir");
@@ -206,10 +206,10 @@ public class TrendYolApp {
 			boolean sattiMi = satinAl(uuid,sepetList ,user, toplamSepetFiyat);
 			if (sattiMi){
 				System.out.println("Satin alma işlemi gerçekleştirildi...");
-				for (UrunSepetDetay sepet: sepetList){
+				for (Sepet sepet: sepetList){
 					UrunDB.updateStok(sepet.getUrunID(), sepet.getSepetAdet());
 				}
-				SepetUrunDetayDB.removeAllSepet();
+				SepetDB.removeAllSepet();
 			}
 			else{
 				System.out.println("Satin alma işlemi gerçekleştirilemedi!");
@@ -218,9 +218,9 @@ public class TrendYolApp {
 		
 	}
 	
-	private static boolean satinAl(String uuid, List<UrunSepetDetay> sepetList, User user, Double toplamSepetFiyat) {
+	private static boolean satinAl(String uuid, List<Sepet> sepetList, User user, Double toplamSepetFiyat) {
 		int userID = user.getId();
-		for (UrunSepetDetay sepet: sepetList){
+		for (Sepet sepet: sepetList){
 			Satis satis = new Satis();
 			satis.setFaturaUUID(uuid);
 			satis.setSepetDetayList(sepet);
@@ -277,10 +277,10 @@ public class TrendYolApp {
 	
 	private static void sepeteEklenme(Urun urun) {
 		int userInput;
-		UrunSepetDetay sepetUrun;
+		Sepet sepetUrun;
 		System.out.println("0-Geri Dön");
 		System.out.println("1-Ürünü sepete ekle");
-		UrunSepetDetay sepet = new UrunSepetDetay();
+		Sepet sepet = new Sepet();
 		System.out.print("Selection: ");
 		userInput = sc.nextInt();
 		System.out.println();
@@ -300,7 +300,7 @@ public class TrendYolApp {
 					System.out.println("\nFazla adet girişi yaptınız!\n");
 					continue;
 				}
-				sepetUrun = SepetUrunDetayDB.findBySepetUrunID(urun.getUrunID());
+				sepetUrun = SepetDB.findBySepetUrunID(urun.getUrunID());
 				Double fiyat = urun.getFiyat();
 				if (sepetUrun == null) {
 					sepet.setUrunID(urun.getUrunID());
@@ -308,7 +308,7 @@ public class TrendYolApp {
 					sepet.setAdetFiyat(fiyat);
 					sepet.setSepetAdet(userInput);
 					sepet.setToplamFiyat(fiyat, userInput);
-					SepetUrunDetayDB.addSepet(sepet);
+					SepetDB.addSepet(sepet);
 					return;
 				}
 				int toplamAdet = sepetUrun.getSepetAdet() + userInput;
@@ -326,7 +326,7 @@ public class TrendYolApp {
 	
 	private static void sepettenUrunSil(int userRmSelection) {
 		System.out.println("---- Sepet İçeriği ------");
-		SepetUrunDetayDB.sepetListAll();
+		SepetDB.sepetListAll();
 		System.out.println();
 		int userInput;
 		boolean silindiMi = false;
@@ -334,14 +334,14 @@ public class TrendYolApp {
 		if (userRmSelection == 2) {
 			System.out.print("Eksiltmek istediğiniz ürünün ürünID: ");
 			userInput = sc.nextInt();
-			UrunSepetDetay sepetUrun = SepetUrunDetayDB.findBySepetUrunID(userInput);
+			Sepet sepetUrun = SepetDB.findBySepetUrunID(userInput);
 			if (sepetUrun == null) {
 				System.out.println("Sepette böyle bir ürün yok!");
 			}
 			else {
 				System.out.print("Eksitmek istediginiz miktar: ");
 				userInput = sc.nextInt();
-				silindiMi = SepetUrunDetayDB.sepettenUrunEksilt(sepetUrun, userInput);
+				silindiMi = SepetDB.sepettenUrunEksilt(sepetUrun, userInput);
 			}
 		}
 		else if (userRmSelection == 3) {
@@ -350,13 +350,13 @@ public class TrendYolApp {
 			System.out.print("selection:");
 			userInput = sc.nextInt();
 			if (userInput == 1) {
-				SepetUrunDetayDB.removeAllSepet();
+				SepetDB.removeAllSepet();
 				silindiMi = true;
 			}
 			else if (userInput == 2) {
 				System.out.print("Silmek istediğiniz sepet ID: ");
 				userInput = sc.nextInt();
-				silindiMi = SepetUrunDetayDB.removeSepetUrunBySepetDetayID(userInput);
+				silindiMi = SepetDB.removeSepetUrunBySepetDetayID(userInput);
 			}
 		}
 		if (silindiMi) {

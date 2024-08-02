@@ -14,7 +14,7 @@ import java.util.Random;
 public class UrunDB {
 	static List<Urun> urunList = new ArrayList<>();
 	static Random random =new Random();
-	static DecimalFormat df = new DecimalFormat("#.00");
+	static DecimalFormat df = new DecimalFormat("#,00");
 	
 	
 	public static void urunSave(Urun urun){

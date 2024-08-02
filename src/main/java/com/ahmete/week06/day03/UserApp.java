@@ -1,7 +1,7 @@
 package com.ahmete.week06.day03;
 
 import com.ahmete.week06.day03.databases.MailDB;
-import com.ahmete.week06.day03.databases.SepetUrunDetayDB;
+import com.ahmete.week06.day03.databases.SepetDB;
 import com.ahmete.week06.day03.databases.UserDB;
 import com.ahmete.week06.day03.entities.Mail;
 import com.ahmete.week06.day03.entities.User;
@@ -284,7 +284,7 @@ public class UserApp {
 				case 9: { // şifre değiş
 					if (changePassword(user)) {
 						System.out.println("The new password has been set.");
-						SepetUrunDetayDB.removeAllSepet();
+						SepetDB.removeAllSepet();
 						userInput = 0;
 						return null;
 					}
@@ -293,7 +293,7 @@ public class UserApp {
 				}
 				case 0: {
 					System.out.println("Returning to home page...");
-					SepetUrunDetayDB.removeAllSepet();
+					SepetDB.removeAllSepet();
 					return null;
 				}
 			}
