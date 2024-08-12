@@ -44,18 +44,18 @@ public class sanslıNumaralarBulma {
 		System.out.println();
 		
 		// 4. Şanslı Numaralar Üzerinde İşlemler
-		List<Integer> buyuk50Liste = sansliNumaralar.stream()
+		List<Integer> ellidenBuyukOlanlar = sansliNumaralar.stream()
 		                                            .filter(sayi -> sayi > 50)
 		                                            .collect(Collectors.toList());
 		
 		int toplam = sansliNumaralar.stream().mapToInt(Integer::intValue).sum();
-		int buyuk50Toplam = buyuk50Liste.stream().mapToInt(Integer::intValue).sum();
+		int ellidenBuyukOlanToplam = ellidenBuyukOlanlar.stream().mapToInt(Integer::intValue).sum();
 		
 		System.out.println("50'den Büyük Şanslı Numaralar:");
-		buyuk50Liste.forEach(sayi -> System.out.print(sayi + " "));
+		ellidenBuyukOlanlar.forEach(sayi -> System.out.print(sayi + " "));
 		System.out.println();
 		
 		System.out.println("Tüm Şanslı Numaraların Toplamı: " + toplam);
-		System.out.println("50'den Büyük Şanslı Numaraların Toplamı: " + buyuk50Toplam);
+		System.out.println("50'den Büyük Şanslı Numaraların Toplamı: " + ellidenBuyukOlanToplam);
 	}
 }
