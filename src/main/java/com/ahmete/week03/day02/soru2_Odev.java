@@ -4,7 +4,7 @@ package com.ahmete.week03.day02;
 
  */
 
-public class soru2 {
+public class soru2_Odev {
 	public static void main(String[] args) {
 		int[] dizi={0,120,5,85,-256,16,1258,81,14};
 		//max sayıyı bulmak için
